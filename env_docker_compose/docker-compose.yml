@@ -1,0 +1,72 @@
+version: '3.3'
+
+services:
+  lab_experimental:
+    image: hantsdatascience:lab
+    container_name: jupyterlab
+    build: 
+      context: .
+      dockerfile: jupyterlab/Dockerfile
+      args:
+          NOTEBOOK_PASSWORD: '"46566656"'
+    ports:
+      - "7777:7777"
+    tty: true
+    stdin_open: true
+    # logging:
+    #         driver: none
+    command: bash -c "jupyter lab --ip=0.0.0.0 --port=7777 --allow-root"
+
+  notebook:
+    image: hantsdatascience:notebook
+    container_name: jupyternotebook
+    build: 
+      context: .
+      dockerfile: jupyternotebook/Dockerfile
+      args:
+          AWS_KEYID: '"INSERYOURKEYIDHERE"' #insert keyID here with following formatting: '"key"'
+          AWS_SECRET: '"INSERTYOURSECRETHERE"'   #insert keyID here with following formatting: '"secret"'
+          AWS_BUCKET: '"INSERTYOURBUCKETHERE"' #insert bucket here with following formatting: '"bucket"'
+          NOTEBOOK_PASSWORD: '"INSERTYOURPASSWORDHERE"' #insert notebook password here with following formatting: '"password"'
+    ports:
+      - "8888:8888"
+    tty: true
+    stdin_open: true
+    # logging:
+    #         driver: none
+    command: bash -c "jupyter notebook --ip=0.0.0.0 --port=8888 --allow-root"
+
+#  commuter:
+#    image: hantsdatascience:commuter
+#    container_name: commuter
+#    build:
+#      context: .
+#      dockerfile: commuter/Dockerfile
+#    ports:
+#      - "4000:4000"
+#    tty: true
+#    stdin_open: true
+#    command: bash -c "export COMMUTER_STORAGE_BACKEND=s3 && export COMMUTER_BUCKET=vhdatascience && exec commuter"
+
+  mysql:
+    image: hantsdatascience:mysql
+    container_name: mysql
+    build:
+      context: .
+      dockerfile: mysql_docker/Dockerfile
+    environment:
+      MYSQL_ROOT_PASSWORD: test123
+      MYSQL_DATABASE: datascience
+      MYSQL_USER: hants
+      MYSQL_PASSWORD: 46566656
+      MYSQL_PORT: 3306
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./db/datadir:/var/lib/mysql
+    command: mysqld --sql_mode="" --explicit_defaults_for_timestamp=1 --innodb_log_buffer_size=32M --innodb_log_file_size=2047M --innodb_fast_shutdown=0
+    
+
+
+
+

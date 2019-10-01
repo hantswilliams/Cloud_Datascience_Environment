@@ -1,0 +1,12 @@
+---
+- hosts: datascience
+  become: true
+  become_method: sudo
+  tasks:
+  - name: Get files 
+    copy:
+      src: ./env_docker_compose
+      dest: /home/ubuntu
+  - name: running docker-compose
+    docker_compose:
+      project_src: /home/ubuntu/env_docker_compose

@@ -1,0 +1,22 @@
+---
+- hosts: localhost  
+  gather_facts: False  
+  tasks:
+  - name: create an aws instance
+    ec2_instance:
+      name: weddingsite3A
+      key_name: aws_general_hants
+      instance_type: t2.micro
+      image_id: ami-06f2f779464715dc5
+      security_group: launch-wizard-68
+      region: us-west-2
+      vpc_subnet_id: subnet-b0b0dad6
+      network:
+        assign_public_ip: yes
+      volumes:
+      - device_name: /dev/sda1
+        ebs:
+          volume_size: 50
+          delete_on_termination: true
+
+# NOTE - once this is done, be sure to add the public-IP for the newly created EC2 within the hosts file (/etc/ansible/hosts)
