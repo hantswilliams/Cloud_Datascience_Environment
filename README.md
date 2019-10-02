@@ -51,7 +51,7 @@ NOTE - the user then has two permissions, the one above, in addition to the stan
 ``` AmazonEC2ContainerRegistryFullAccess ``` 
 
 So in my instance, it looks like this for the role: 
-`s3_instagramcv_policy_access`
+`s3_datascience_policy_access`
 `AmazonEC2ContainerRegistryFullAccess`
 
 ### STEP 3: JUPYTER NOTEBOOK PASSWORD 
