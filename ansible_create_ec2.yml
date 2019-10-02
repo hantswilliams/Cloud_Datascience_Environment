@@ -4,7 +4,7 @@
   tasks:
   - name: create an aws instance
     ec2_instance:
-      name: weddingsite3A
+      name: datasci_env_1
       key_name: aws_general_hants
       instance_type: t2.micro
       image_id: ami-06f2f779464715dc5

@@ -1,5 +1,5 @@
 ---
-- hosts: wedding
+- hosts: datasci_env
   become: true
   become_method: sudo
   tasks:
