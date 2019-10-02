@@ -6,7 +6,7 @@
 - AWS S3
 - Jupyter Notebooks
     - Saving Notebooks in S3: PIP package: *s3contents* {utilized to save filers, notebooks in bucket}
-    - Viewing Notebooks easily: *COMMUTER*: javasript // {utilized to view-only --> existing notebooks }
+    - Viewing Notebooks easily: *Commuter*: javasript // {utilized to view-only --> existing notebooks }
         - NOTE - this package is `de-activated` as this function is covered by s3contents package (should keep eye out for releases)
     - Saving Notebook Alternative: *Bookstore* --> from nINTERACT group, not as good as s3contents for our purposes currently 
         - NOTE - this package is `de-activated` as this funciton is covered by s3contents package (should keep eye out for releases)
