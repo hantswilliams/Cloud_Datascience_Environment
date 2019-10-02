@@ -5,15 +5,15 @@
 - Docker
 - AWS S3
 - Jupyter Notebooks
-    - Saving Notebooks in S3: PIP package: `s3contents` {utilized to save filers, notebooks in bucket}
-    - Viewing Notebooks easily: `COMMUTER`: javasript // {utilized to view-only --> existing notebooks }
-        - NOTE - have package is de-activated as this function is covered by s3contents package (should keep eye out for releases)
-    - Saving Notebook Alternative: Bookstore --> from nINTERACT group, not as good as s3contents for our purposes currently 
-        - NOTE - this package is de-activated as this funciton is covered by s3contents package (should keep eye out for releases)
+    - Saving Notebooks in S3: PIP package: *s3contents* {utilized to save filers, notebooks in bucket}
+    - Viewing Notebooks easily: *COMMUTER*: javasript // {utilized to view-only --> existing notebooks }
+        - NOTE - this package is `de-activated` as this function is covered by s3contents package (should keep eye out for releases)
+    - Saving Notebook Alternative: *Bookstore* --> from nINTERACT group, not as good as s3contents for our purposes currently 
+        - NOTE - this package is `de-activated` as this funciton is covered by s3contents package (should keep eye out for releases)
 
 ### STEP1: AWS IAM Configuration   
 Before running ansible to generate EC2 instance, you will need to create/ensure there is a IAM role that can access the specific bucket that will contain the folders / items that the notebook will pull from. If there is not a existing IAM role, create one with permissions to do everything (Read, Write, Edit): with the name of 
-`s3_instagramcv_policy_access`: 
+`s3_datascience_policy_access`: 
 
 ```
 {
